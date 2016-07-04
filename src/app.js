@@ -7,18 +7,20 @@ const debug = {
 const Request = require('request')
 
 module.exports = class phpfpm {
-    constructor() {
+    constructor(port, phpfpmUri) {
+        this.port = port || 6755
+        this.phpfpmUri = phpfpmUri || 'localhost'
         this.metrics = {}
     }
 
-    start(port) {
-        this.listen(port)
+    start() {
+        this.listen()
         this.poll()
     }
 
-    listen(port) {
-        this.client = new Prometheus({ port: port })
-        debug.metric('http server listening on %s', port)
+    listen() {
+        this.client = new Prometheus({ port: this.port })
+        debug.metric('http server listening on %s', this.port)
         this.client.createServer(true)
     }
 
@@ -98,7 +100,7 @@ module.exports = class phpfpm {
 
     requestFpmStatus(callback) {
         Request({
-            uri: 'http://localhost/status?json',
+            uri: 'http://' + this.phpfpmUri + '/status?json',
         }, function(err, response, body) {
             if (err) {
                 debug.http('got error response: %s', err.toString())
