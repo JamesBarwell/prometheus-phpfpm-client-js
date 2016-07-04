@@ -1,0 +1,17 @@
+{
+  "name": "prometheus-phpfpm-exporter",
+  "version": "1.0.0",
+  "description": "Expose PHP-FPM metrics to Prometheus",
+  "main": "lib.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "James Barwell",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "prometheus-client-js": "^2.3.6",
+    "request": "^2.72.0"
+  }
+}
