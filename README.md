@@ -1,6 +1,8 @@
 Expose PHP-FPM metrics to Prometheus
 ------
 
+This project is no longer supported. Please use [phpfpm_exporter](https://github.com/JamesBarwell/phpfpm_exporter) instead.
+
 ## How to use
 
 ### PHP-FPM set up
